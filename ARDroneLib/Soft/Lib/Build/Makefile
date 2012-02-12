@@ -90,8 +90,10 @@ GENERIC_LIBRARY_SOURCE_FILES+=					       \
 	      $(ARDRONE_TOOL_DIR)/Navdata/ardrone_navdata_client.c	
 
         ifeq ($(USE_IPHONE),no)
-			GENERIC_LIBRARY_SOURCE_FILES+=				\
-				$(ARDRONE_TOOL_DIR)/Com/config_serial.c			
+            ifeq($(USE_MACOSX),no)
+				GENERIC_LIBRARY_SOURCE_FILES+=				\
+					$(ARDRONE_TOOL_DIR)/Com/config_serial.c
+			endif
         endif
         
   		ifeq ($(USE_ARDRONE_VICON),yes)
@@ -128,7 +130,7 @@ GENERIC_CFLAGS+=-DHARDWARE_ARDRONE=\"$(HARDWARE_ARDRONE)\" \
 		-DHARDWARE_ARDRONE_CALIBRATION=\"$(HARDWARE_ARDRONE_CALIBRATION)\"
 endif
 
-endif
+#endif
 
 BASE_RELATIVE_PATH_FROM_SDK=../../
 

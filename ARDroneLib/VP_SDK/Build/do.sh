@@ -31,6 +31,7 @@ if [ $1 ] && [ $1 = ecos ] ; then
   USE_ELINUX=no
   USE_NDS=no
   USE_IPHONE=no
+  USE_MACOSX=no
   # head ecos-stable-2006-11-21 ecos-stable-2007-07-23 CK5300_Version_20070928_Beta5
   ECOS_VERSION=Mykonos_Version_20090212
   PROJECT=mykonos_p5p
@@ -67,6 +68,7 @@ elif [ $1 ] && [ $1 = elinux ] ; then
   USE_ELINUX=yes
   USE_NDS=no
   USE_IPHONE=no
+  USE_MACOSX=no
   ELINUX_VERSION=head
   TOOLCHAIN_VERSION=arm-eglibc
   NO_COM=no
@@ -88,6 +90,7 @@ elif [ $1 ] && [ $1 = linux ] ; then
   USE_ELINUX=no
   USE_NDS=no
   USE_IPHONE=no
+  USE_MACOSX=no
   NO_COM=no
   USE_BLUES32=no
   USE_BLUEZ=no
@@ -105,6 +108,7 @@ elif [ $1 ] && [ $1 = nds ] ; then
   USE_NDS=yes
   NDS_CPU=ARM9
   USE_IPHONE=no
+  USE_MACOSX=no
   NO_COM=no
   USE_BLUES32=no
   USE_BLUEZ=no
@@ -120,6 +124,7 @@ elif [ $1 ] && [ ${1:0:6} = iphone ] ; then
 	USE_ELINUX=no
 	USE_NDS=no
 	USE_IPHONE=yes
+  USE_MACOSX=no
 	IPHONE_PLATFORM=$1
 	NO_COM=no
 	USE_BLUES32=no
@@ -128,6 +133,23 @@ elif [ $1 ] && [ ${1:0:6} = iphone ] ; then
 	USE_BONJOUR=no
 	FF_ARCH=Intel
 	USE_PARROTOS_CORE=no
+elif [ $1 ] && [ $1 = macosx ] ; then
+  if [ ! $QUIET_BUILD = yes ] ; then
+    echo ; echo "BUILD FOR OSX" ; echo
+  fi
+  USE_ECOS=no
+  USE_LINUX=no
+  USE_ELINUX=no
+  USE_NDS=no
+  USE_IPHONE=no
+  USE_MACOSX=yes
+  NO_COM=no
+  USE_BLUES32=no
+  USE_BLUEZ=no
+  USE_WIFI=no
+  USE_BONJOUR=no
+  FF_ARCH=Intel
+  USE_PARROTOS_CORE=no
 else
   echo ; echo "UNDEFINED BUILD" ; echo ;
 fi
@@ -145,6 +167,7 @@ FLAGS="USE_ELINUX=$USE_ELINUX $FLAGS"
 FLAGS="USE_NDS=$USE_NDS $FLAGS"
 FLAGS="NDS_CPU=$NDS_CPU $FLAGS"
 FLAGS="USE_IPHONE=$USE_IPHONE $FLAGS"
+FLAGS="USE_MACOSX=$USE_MACOSX $FLAGS"
 FLAGS="IPHONE_PLATFORM=$IPHONE_PLATFORM $FLAGS"
 FLAGS="USE_SDK=$USE_SDK $FLAGS"
 FLAGS="NO_COM=$NO_COM $FLAGS"

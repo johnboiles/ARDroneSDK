@@ -20,7 +20,7 @@ verify()
 packages="";
 
 if [ `which uname` ] ; then 
-	if [ `uname -a | grep Ubuntu | wc -l` ] ; then
+	if [ `uname -a | grep Ubuntu` ] ; then
 
 		echo "\033[31mChecking required Ubuntu packages ...\033[0m";  
 

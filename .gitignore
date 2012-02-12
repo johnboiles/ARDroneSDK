@@ -1,2 +1,8 @@
 .DS_Store
+ARDroneLib/Soft/Build/targets_versions/
+ARDroneLib/Soft/Build/temporary_file
+ARDroneLib/Soft/Common/generated_custom.h
+ControlEngine/iPhone/ARDroneEngine.xcodeproj/project.xcworkspace/
+ControlEngine/iPhone/ARDroneEngine.xcodeproj/xcuserdata/
+ControlEngine/iPhone/build/
 

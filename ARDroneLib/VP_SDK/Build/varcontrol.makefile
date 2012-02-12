@@ -218,6 +218,15 @@ ifeq "$(USE_IPHONE)" "yes"
   $(eval $(call CHECK_TWO_VALUES,IPHONE_PLATFORM,iphoneos,iphonesimulator, IPHONE_PLATFORM must be set to iphoneos or iphonesimulator))
 endif
 
+ifeq "$(USE_MACOSX)" "yes"
+  $(eval $(call CHECK_VALUE,USE_ANDROID,no,macosx is used))
+  $(eval $(call CHECK_VALUE,USE_NDS,no,macosx is used))
+  $(eval $(call CHECK_VALUE,USE_LINUX,no,macosx is used))
+  $(eval $(call CHECK_VALUE,USE_ELINUX,no,macosx is used))
+  $(eval $(call CHECK_VALUE,USE_IPHONE,no,macosx is used))
+  $(eval $(call CHECK_VALUE,USE_PARROTOS_CORE,no,macosx is used (parrotos is available only on elinux)))
+endif
+
 $(eval $(call CHECK_VALUE,USE_BONJOUR,no,ecos is not used))
 
 ifeq "$(NO_COM)" "yes"

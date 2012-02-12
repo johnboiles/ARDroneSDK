@@ -68,17 +68,23 @@ ifeq ($(USE_IPHONE),yes)
 	GENERIC_LIBRARY_SOURCE_FILES+=			\
 		Platform/x86/video_utils.c		\
 		Platform/x86/UVLC/uvlc_codec.c
-  endif
+  endif	
 else
    ifeq ($(USE_ANDROID),yes)
 	GENERIC_LIBRARY_SOURCE_FILES+=			\
 		Platform/arm11/video_utils.c		\
 		Platform/arm11/UVLC/uvlc_codec.c
    else
-      ifeq ($(FF_ARCH),Intel)
-	     GENERIC_LIBRARY_SOURCE_FILES+=			\
-		   Platform/x86/video_utils.c		\
-		   Platform/x86/UVLC/uvlc_codec.c
+   	  ifeq ($(USE_MACOSX),yes)
+		GENERIC_LIBRARY_SOURCE_FILES+=			\
+			Platform/x86/video_utils.c		\
+			Platform/x86/UVLC/uvlc_codec.c
+   	  else
+	      ifeq ($(FF_ARCH),Intel)
+		     GENERIC_LIBRARY_SOURCE_FILES+=			\
+			   Platform/x86/video_utils.c		\
+			   Platform/x86/UVLC/uvlc_codec.c
+      	  endif
       endif
    endif
 endif

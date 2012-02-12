@@ -81,7 +81,12 @@ else
 			OS_TARGET_NAME:=$(shell echo "$(OS_TARGET_NAME)" | sed -e "s/simulator/Simulator/g")
 			TOOLCHAIN_PATH=/Developer/Platforms/$(OS_TARGET_NAME).platform/Developer/usr/bin
 			GENERIC_COMMAND_PREFIX=$(TOOLCHAIN_PATH)/
-	else
+		else
+		  ifeq ($(USE_MACOSX),yes)
+		  	OS_TARGET_ID=$(shell uname -sr | sed -e "s/[ \/]/_/g")
+		  	TOOLCHAIN_PATH=/Developer/usr/bin
+			GENERIC_COMMAND_PREFIX=$(TOOLCHAIN_PATH)/
+		  else
 	     OS_TARGET_ID=$(shell uname -sor | sed -e "s/[ \/]/_/g")
         ifeq ($(USE_ANDROID),yes)
           TOOLCHAIN_PATH=$(NDK_PATH)/build/prebuilt/linux-x86/$(TOOLCHAIN_VERSION)/bin
@@ -89,6 +94,7 @@ else
         else
           GENERIC_COMMAND_PREFIX=		
         endif
+      endif
 	endif
       endif
     endif
@@ -325,7 +331,6 @@ TARGET_IDS:=OS APP DLL LIB SDK COM CODEC JPEG BONJOUR PARROTOS_CORE PARROTOS_UTI
 
 $(foreach id,$(filter-out OS,$(TARGET_IDS)),$(eval $(call ADD_OS_TARGET_ID,$(id))))
 $(foreach id,$(TARGET_IDS),$(eval $(call FINALIZE_TARGET_ID,$(id))))
-
 
 ifeq ($(USE_NDS),yes)
     ifeq ($(NDS_CPU),ARM7)

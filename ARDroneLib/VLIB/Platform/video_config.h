@@ -23,11 +23,11 @@
 // Configuration for x86 Platforms
 ////////////////////////////////////////////
 
-#if (TARGET_CPU_X86 == 1) || defined (_WIN32)
+//#if (TARGET_CPU_X86 == 1) || defined (_WIN32)
 
 #include "x86/video_config.h"
 
-#endif // TARGET_CPU_X86
+//#endif // TARGET_CPU_X86
 
 ////////////////////////////////////////////
 

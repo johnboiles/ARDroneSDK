@@ -55,8 +55,10 @@ ifneq ($(USE_ANDROID),yes)
 ifneq ($(USE_ELINUX),yes)
 ifneq ($(USE_MINGW32),yes)
 ifneq ($(USE_IPHONE),yes)
+ifneq ($(USE_MACOSX),yes)
   GENERIC_LIBRARY_SOURCE_FILES+=			\
-	$(STAGES_PATH)/vp_stages_o_sdl.c		
+	$(STAGES_PATH)/vp_stages_o_sdl.c
+endif
 endif
 endif
 endif
@@ -66,8 +68,10 @@ endif
 ifneq ($(USE_ANDROID),yes)
 ifneq ($(USE_NDS),yes)
 ifneq ($(USE_IPHONE),yes)
+ifneq ($(USE_MACOSX),yes)
   GENERIC_LIBRARY_SOURCE_FILES+=			\
 	$(COM_PATH)/$(OS)/vp_com_serial.c
+endif
 endif
 endif
 endif
@@ -117,6 +121,14 @@ ifeq ($(USE_WIFI),yes)
   GENERIC_LIBRARY_SOURCE_FILES +=			\
 	$(COM_PATH)/linux/vp_com_wifi.c
 endif
+endif
+
+ifeq ($(USE_MACOSX),yes)
+  BUILD_COM_BASE:=yes
+	ifeq ($(USE_WIFI),yes)
+	  GENERIC_LIBRARY_SOURCE_FILES +=			\
+		$(COM_PATH)/linux/vp_com_wifi.c
+	endif
 endif
 
 ifeq ($(BUILD_COM_BASE),yes)

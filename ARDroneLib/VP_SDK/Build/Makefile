@@ -174,7 +174,11 @@ else
 		        else  
 		           GENERIC_CFLAGS+=-arch i386
 		        endif
-		     else  
+		     else
+		     	ifeq ($(USE_MACOSX),yes)
+		     		GENERIC_CFLAGS+=-D__MACOSX__ -std=gnu99
+	        		GENERIC_CFLAGS+=-arch $(ARDRONE_TARGET_ARCH)
+		     	else
 		        ifeq ($(USE_LINUX), yes)        
 			       GENERIC_CFLAGS+=-D__LINUX__
               else
@@ -195,6 +199,7 @@ else
 								 -D__ARM_ARCH_5__ -D__ARM_ARCH_5T__ \
 								 -D__ARM_ARCH_5E__ -D__ARM_ARCH_5TE__
                  endif
+		        endif
 		        endif
 	        endif
         endif

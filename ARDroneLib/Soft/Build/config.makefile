@@ -71,8 +71,12 @@ ifdef PC_TARGET
       ifeq ($(ARDRONE_TARGET_OS),iphonesimulator)
          OS_DEFINE=GNU_LINUX
       else
-         TARGET:=$(TARGET).exe
-         OS_DEFINE=WINDOW
+        ifeq ($(ARDRONE_TARGET_OS),macosx)
+          OS_DEFINE=GNU_LINUX
+        else
+          TARGET:=$(TARGET).exe
+          OS_DEFINE=WINDOW
+        endif
       endif
     endif
   endif
@@ -114,9 +118,15 @@ ifdef PC_TARGET
   	SDK_FLAGS+="IPHONE_PLATFORM=$(ARDRONE_TARGET_OS)"
     SDK_FLAGS+="IPHONE_SDK_PATH=$(IPHONE_SDK_PATH)"
   else
-	SDK_FLAGS+="USE_IPHONE=no"
+       SDK_FLAGS+="USE_IPHONE=no"
   endif
-  
+
+  ifeq ($(ARDRONE_TARGET_OS),macosx)
+    SDK_FLAGS+="USE_MACOSX=yes"
+  else
+    SDK_FLAGS+="USE_MACOSX=no"
+  endif
+
   SDK_FLAGS+="ARDRONE_TARGET_ARCH=$(ARDRONE_TARGET_ARCH)"
   
   ifeq ("$(USE_NDS)","yes")
