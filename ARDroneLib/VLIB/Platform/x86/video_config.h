@@ -3,6 +3,7 @@
 
 /* Default configuration for x86 platform */
 
+// TODO: This is really bad. I can't seem to get TARGET_CPU_X86 to be 1 so I'm commenting this out
 //#if (TARGET_CPU_X86 == 1) || defined (_WIN32)
 
 #define DEFAULT_QUANTIZATION          (6)

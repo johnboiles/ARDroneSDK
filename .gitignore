@@ -5,4 +5,5 @@ ARDroneLib/Soft/Common/generated_custom.h
 ControlEngine/iPhone/ARDroneEngine.xcodeproj/project.xcworkspace/
 ControlEngine/iPhone/ARDroneEngine.xcodeproj/xcuserdata/
 ControlEngine/iPhone/build/
+ControlEngine/iPhone/Debug/
 
