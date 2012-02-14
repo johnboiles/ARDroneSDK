@@ -122,6 +122,7 @@ ifdef PC_TARGET
   endif
 
   ifeq ($(ARDRONE_TARGET_OS),macosx)
+    GENERIC_CFLAGS+=-DTARGET_OS_MACOSX
     SDK_FLAGS+="USE_MACOSX=yes"
   else
     SDK_FLAGS+="USE_MACOSX=no"

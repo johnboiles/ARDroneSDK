@@ -1,7 +1,7 @@
 #ifndef _VIDEO_UTILS_X86_H_
 #define _VIDEO_UTILS_X86_H_
 
-#if TARGET_CPU_X86 == 1
+#if (TARGET_CPU_X86 == 1) || (TARGET_CPU_X86_64 == 1)
 
 #include <intrin.h>
 

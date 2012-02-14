@@ -23,12 +23,11 @@
 // Configuration for x86 Platforms
 ////////////////////////////////////////////
 
-// TODO: This is really bad. I can't seem to get TARGET_CPU_X86 to be 1 so I'm commenting this out
-//#if (TARGET_CPU_X86 == 1) || defined (_WIN32)
+#if (TARGET_CPU_X86 == 1) || (TARGET_CPU_X86_64 == 1) || defined (_WIN32)
 
 #include "x86/video_config.h"
 
-//#endif // TARGET_CPU_X86
+#endif // TARGET_CPU_X86
 
 ////////////////////////////////////////////
 

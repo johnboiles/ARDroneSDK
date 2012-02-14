@@ -59,7 +59,7 @@ typedef unsigned  __int64   uint64_t;
 
 #endif // < _WIN32
 
-#if defined(__NDS__) || defined(TARGET_OS_IPHONE) || defined(TARGET_IPHONE_SIMULATOR)
+#if defined(__NDS__) || defined(TARGET_OS_IPHONE) || defined(TARGET_IPHONE_SIMULATOR) || defined(TARGET_OS_MACOSX)
 
 #ifdef __NDS__
 #include <nds.h>

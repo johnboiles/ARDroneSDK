@@ -3,8 +3,7 @@
 
 /* Default configuration for x86 platform */
 
-// TODO: This is really bad. I can't seem to get TARGET_CPU_X86 to be 1 so I'm commenting this out
-//#if (TARGET_CPU_X86 == 1) || defined (_WIN32)
+#if (TARGET_CPU_X86 == 1) || (TARGET_CPU_X86_64 == 1) || defined (_WIN32)
 
 #define DEFAULT_QUANTIZATION          (6)
 
@@ -14,6 +13,6 @@
 
 #define VLIB_ALLOC_ALIGN              (16) /* Default alignement for using SIMD instruction */
 
-//#endif // TARGET_CPU_X86
+#endif // TARGET_CPU_X86
 
 #endif // _VIDEO_CONFIG_X86_H_

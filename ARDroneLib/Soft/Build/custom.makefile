@@ -33,10 +33,14 @@ IPHONE_SDK_PATH=/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.
 ARDRONE_TARGET_OS=iphoneos
 ARDRONE_TARGET_ARCH=armv6
 else
-   ifeq ($(USE_ANDROID),yes)
+   ifeq ($(USE_MACOSX),yes)
       USE_ARDRONE_MAINLOOP=no
+   else
+      ifeq ($(USE_ANDROID),yes)
+         USE_ARDRONE_MAINLOOP=no
+      endif
+   ARDRONE_TARGET_OS=Linux
    endif
-ARDRONE_TARGET_OS=Linux
 endif
 
 ################## Wifi Options ##################

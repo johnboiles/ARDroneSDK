@@ -12,7 +12,7 @@
 #include <VP_Os/vp_os_malloc.h>
 #include <VP_Os/vp_os_assert.h>
 
-#if TARGET_CPU_X86 == 1
+#if (TARGET_CPU_X86 == 1) || (TARGET_CPU_X86_64 == 1)
 
 #ifdef HAS_UVLC_DECODE_BLOCKLINE
 C_RESULT uvlc_read_block_unquantize( video_controller_t* controller, int16_t* data, int32_t quant, int32_t nc )
