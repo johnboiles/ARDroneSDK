@@ -4,7 +4,7 @@
 
 #include "video_utils.h"
 
-#if (TARGET_CPU_X86 == 1) || (TARGET_CPU_X86_64) || defined (_WIN32)
+#if (TARGET_CPU_X86 == 1) || (TARGET_CPU_X86_64 == 1) || defined (_WIN32)
 
 static uint32_t num_references = 0;
 

@@ -7,7 +7,7 @@
 // #undef always_inline
 #if defined(__GNUC__)
 
-#if (TARGET_CPU_X86 == 1) || (TARGET_CPU_X86_64)
+#if (TARGET_CPU_X86 == 1) || (TARGET_CPU_X86_64 == 1)
 
 static INLINE uint32_t _BitScanReverse(uint32_t* index, uint32_t mask)
 {

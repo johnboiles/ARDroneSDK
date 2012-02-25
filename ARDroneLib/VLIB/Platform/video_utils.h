@@ -25,7 +25,7 @@
 // Configuration for x86 Platforms
 ////////////////////////////////////////////
 
-#if (TARGET_CPU_X86 == 1) || (TARGET_CPU_X86_64) || defined (_WIN32)
+#if (TARGET_CPU_X86 == 1) || (TARGET_CPU_X86_64 == 1) || defined (_WIN32)
 #include "x86/video_utils.h"
 #endif // TARGET_CPU_X86
 
