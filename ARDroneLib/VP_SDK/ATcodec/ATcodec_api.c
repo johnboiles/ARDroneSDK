@@ -13,7 +13,7 @@
 #include <VP_Os/vp_os_signal.h>
 #include <VP_Os/vp_os_print.h>
 
-#if !defined(TARGET_OS_IPHONE) && !defined(TARGET_IPHONE_SIMULATOR)
+#if !defined(TARGET_OS_IPHONE) && !defined(TARGET_IPHONE_SIMULATOR) && !defined(TARGET_OS_MACOSX)
 # include <VP_Api/vp_api_thread_helper.h>
 #endif // ! TARGET_OS_IPHONE && ! TARGET_IPHONE_SIMULATOR
 
@@ -434,7 +434,7 @@ static ATCODEC_RET process_received_data(ATcodec_Tree_t *tree, int nb, char *glo
 * in 'func_ptrs.read' to fetch data, accumulates these data until
 * a full AT command has been received, and then call the AT decoder.
 * */
-#if !defined(TARGET_OS_IPHONE) && !defined(TARGET_IPHONE_SIMULATOR)
+#if !defined(TARGET_OS_IPHONE) && !defined(TARGET_IPHONE_SIMULATOR) && !defined(TARGET_OS_MACOSX)
 DEFINE_THREAD_ROUTINE_STACK(ATcodec_Commands_Server,data,ATCODEC_STACK_SIZE)
 {
   ATcodec_Tree_t *tree = &default_tree;
@@ -722,7 +722,7 @@ ATcodec_Send_Messages()
   return res;
 }
 
-#if !defined(TARGET_OS_IPHONE) && !defined(TARGET_IPHONE_SIMULATOR)
+#if !defined(TARGET_OS_IPHONE) && !defined(TARGET_IPHONE_SIMULATOR) && !defined(TARGET_OS_MACOSX)
 DEFINE_THREAD_ROUTINE_STACK(ATcodec_Commands_Client,data,ATCODEC_STACK_SIZE)
 {
   AT_CODEC_ERROR_CODE res;

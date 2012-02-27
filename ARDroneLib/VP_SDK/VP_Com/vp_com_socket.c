@@ -18,6 +18,9 @@
 #define CYGPKG_NET 1
 #endif
 
+// In config_wifi.c
+vp_com_wifi_config_t* wifi_config();
+
 #if defined(USE_MINGW32) || defined(TARGET_OS_IPHONE) || defined(TARGET_IPHONE_SIMULATOR) || defined(TARGET_OS_MACOSX)
 
 #define MSG_NOSIGNAL 0

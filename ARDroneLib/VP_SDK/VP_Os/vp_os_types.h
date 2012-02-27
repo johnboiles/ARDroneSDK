@@ -12,7 +12,7 @@
 
 #include <VP_Os/vp_os.h>
 
-#if defined(USE_LINUX) || defined(__ELINUX__)
+#if defined(USE_LINUX) || defined(__ELINUX__) || defined(__MACOSX__)
 # include "vp_os_serial.h"
 #endif // USE_LINUX
 

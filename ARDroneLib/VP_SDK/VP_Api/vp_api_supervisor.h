@@ -62,8 +62,7 @@ struct _vp_api_io_pipeline_;
 #define VP_API_DEST_PIPELINE_LEVEL            0x7fff
 #define VP_API_DEST_STAGE_BROADCAST           0x7ffe
 
-
-typedef int32_t PIPELINE_ADDRESS;   ///< Pipeline address
+typedef void *PIPELINE_ADDRESS;   ///< Pipeline address
 typedef int16_t PIPELINE_HANDLE;    ///< Pipeline handle
 
 

@@ -103,7 +103,7 @@ static inline void sincosf(float32_t a, float32_t* out_s, float32_t* out_c)
     :"m"(a)
   );
 }
-#elif defined( _MSC_VER ) || defined( TARGET_OS_IPHONE) || defined(TARGET_IPHONE_SIMULATOR)
+#elif defined( _MSC_VER ) || defined(TARGET_OS_IPHONE) || defined(TARGET_IPHONE_SIMULATOR) || defined (TARGET_OS_MACOSX)
 static inline void sincosf(float32_t a, float32_t* out_s, float32_t* out_c)
 {
 	*out_s = sinf(a);
