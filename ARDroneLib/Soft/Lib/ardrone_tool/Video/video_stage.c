@@ -7,6 +7,7 @@
  *
  */
 #include <ardrone_tool/Video/video_stage.h>
+#import <dispatch/dispatch.h>
 
 #define NB_STAGES 5
 
@@ -57,7 +58,7 @@ C_RESULT video_stage_transform(vlib_stage_decoding_config_t *cfg, vp_api_io_data
 		
 		if(cfg->num_picture_decoded > video_stage_config.num_picture_decoded)
 		{
-			video_stage_config.num_picture_decoded = cfg->num_picture_decoded;
+      video_stage_config.num_picture_decoded = cfg->num_picture_decoded;
 			video_stage_config.num_frame = cfg->controller.num_frames;
 			video_stage_config.bytesPerPixel	= 2;
 			video_stage_config.widthImage		= cfg->controller.width;
@@ -113,6 +114,8 @@ void video_stage_resume_thread(void)
 	video_stage_in_pause = FALSE;
 	vp_os_mutex_unlock(&video_stage_mutex);	
 }
+
+void looper(vp_api_io_pipeline_t *pipeline, vp_api_io_data_t *out_data);
 
 DEFINE_THREAD_ROUTINE(video_stage, data)
 {
@@ -215,6 +218,11 @@ DEFINE_THREAD_ROUTINE(video_stage, data)
 					vp_os_cond_wait(&video_stage_condition);
 					vp_os_mutex_unlock(&video_stage_mutex);
 				}
+        vp_api_io_pipeline_t *pipeline_address = &pipeline;
+        vp_api_io_data_t *out_data = &out;
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0);
+        dispatch_async(queue, ^{looper(pipeline_address, out_data);});
+        while (1) { sleep(20); }
 
 				if( SUCCEED(vp_api_run(&pipeline, &out)) ) {
 					if( (out.status == VP_API_STATUS_PROCESSING || out.status == VP_API_STATUS_STILL_RUNNING) ) {
@@ -231,6 +239,12 @@ DEFINE_THREAD_ROUTINE(video_stage, data)
 	PRINT("   video stage thread ended\n\n");
 	
 	return (THREAD_RET)0;
+}
+
+void looper(vp_api_io_pipeline_t *pipeline, vp_api_io_data_t *out_data) {
+  vp_api_run(pipeline, out_data);
+  dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0);
+  dispatch_async(queue, ^{looper(pipeline, out_data);});
 }
 
 uint32_t video_stage_get_num_retries(void)
