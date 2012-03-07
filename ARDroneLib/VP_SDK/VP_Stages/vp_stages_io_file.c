@@ -35,9 +35,6 @@ C_RESULT
 vp_stages_input_file_stage_transform(vp_stages_input_file_config_t *cfg, vp_api_io_data_t *in, vp_api_io_data_t *out)
 {
   vp_os_mutex_lock(&out->lock);
-  uint32_t UI32_i=0;
-  char c;
-  uint32_t y_size, c_size;
   if( out->status == VP_API_STATUS_INIT )
   {
     out->numBuffers =  1;

@@ -230,7 +230,7 @@ dictionary_value* dictionary_get(dictionary * d, const char * key)
   This function returns non-zero in case of failure.
  */
 /*--------------------------------------------------------------------------*/
-dictionary_value* dictionary_set(dictionary * d, const char * key, char * val, int type, void* ptr,void (*cb)(void))
+dictionary_value* dictionary_set(dictionary * d, const char * key, const char * val, int type, void* ptr,void (*cb)(void))
 {
   int i;
   unsigned  hash;

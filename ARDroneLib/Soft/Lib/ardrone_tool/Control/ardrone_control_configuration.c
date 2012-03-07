@@ -47,7 +47,7 @@ void ardrone_control_read_custom_configurations_list(/*in*/char * buffer,
 	char id[CUSTOM_CONFIGURATION_ID_LENGTH+1];
 	char description[1024];
 	int index = 0;
-	char * pindex; int i,j;
+	char * pindex; int j;
 	char * end_of_buffer;
 
 	index = 0;
@@ -327,7 +327,7 @@ C_RESULT ardrone_control_configuration_run( uint32_t ardrone_state, ardrone_cont
 																			available_configurations);
 
 							/* Clean up */
-								vp_os_sfree(&custom_configuration_list_buffer);
+								vp_os_sfree((void *)&custom_configuration_list_buffer);
 								custom_configuration_list_buffer_size = 0;
 								custom_configuration_list_data_size = 0;
 							res = C_OK;
