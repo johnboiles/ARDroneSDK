@@ -11,7 +11,7 @@
 #include <termios.h>
 
 // The following aren't in MacOSX's termios
-#if defined(TARGET_OS_MACOSX)
+#if defined(TARGET_OS_MACOSX) || defined(TARGET_OS_IPHONE)
 #ifndef B460800
 #define B460800 460800
 #endif
