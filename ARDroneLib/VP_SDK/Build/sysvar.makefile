@@ -79,12 +79,13 @@ else
 			OS_TARGET_NAME:=$(shell echo "$(OS_TARGET_NAME)" | sed -e "s/iphone/iPhone/g")
 			OS_TARGET_NAME:=$(shell echo "$(OS_TARGET_NAME)" | sed -e "s/os/OS/g")
 			OS_TARGET_NAME:=$(shell echo "$(OS_TARGET_NAME)" | sed -e "s/simulator/Simulator/g")
-			TOOLCHAIN_PATH=/Developer/Platforms/$(OS_TARGET_NAME).platform/Developer/usr/bin
+			#TOOLCHAIN_PATH=/Developer/Platforms/$(OS_TARGET_NAME).platform/Developer/usr/bin
+			TOOLCHAIN_PATH=/Applications/Xcode.app/Contents/Developer/Platforms/$(OS_TARGET_NAME).platform/Developer/usr/bin
 			GENERIC_COMMAND_PREFIX=$(TOOLCHAIN_PATH)/
 		else
 		  ifeq ($(USE_MACOSX),yes)
 		  	OS_TARGET_ID=$(shell uname -sr | sed -e "s/[ \/]/_/g")
-		  	TOOLCHAIN_PATH=/Developer/usr/bin
+		  	TOOLCHAIN_PATH=/usr/bin
 			GENERIC_COMMAND_PREFIX=$(TOOLCHAIN_PATH)/
 		  else
 	     OS_TARGET_ID=$(shell uname -sor | sed -e "s/[ \/]/_/g")

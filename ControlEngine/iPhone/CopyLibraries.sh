@@ -39,13 +39,24 @@ echo "Compiling ARDroneLib with options IPHONE_MODE = yes - IPHONE_SDK_PATH=${SD
 make IPHONE_MODE=yes IPHONE_SDK_PATH=${SDK_DIR} RELEASE_BUILD=$RELEASE_BUILD ARDRONE_TARGET_OS=${EFFECTIVE_PLATFORM_NAME:1} ARDRONE_TARGET_ARCH=armv7
 
 cd -
-export ARDRONE_ARDRONELIB_ARMV6_PATH="../../ARDroneLib/Soft/Build/targets_versions/ardrone_lib_"$ARDRONE_TARGET_BUILD"_vlib_armv6_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
-export ARDRONE_SDKDEV_ARMV6_PATH="../../ARDroneLib/Soft/Build/targets_versions/sdk_"$ARDRONE_TARGET_BUILD"_vlib_armv6_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
-export ARDRONE_VLIB_ARMV6_PATH="../../ARDroneLib/Soft/Build/targets_versions/vlib_"$ARDRONE_TARGET_BUILD"_armv6_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+# For XCode <= 4.2
+#export ARDRONE_ARDRONELIB_ARMV6_PATH="../../ARDroneLib/Soft/Build/targets_versions/ardrone_lib_"$ARDRONE_TARGET_BUILD"_vlib_armv6_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+#export ARDRONE_SDKDEV_ARMV6_PATH="../../ARDroneLib/Soft/Build/targets_versions/sdk_"$ARDRONE_TARGET_BUILD"_vlib_armv6_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+#export ARDRONE_VLIB_ARMV6_PATH="../../ARDroneLib/Soft/Build/targets_versions/vlib_"$ARDRONE_TARGET_BUILD"_armv6_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
 
-export ARDRONE_ARDRONELIB_ARMV7_PATH="../../ARDroneLib/Soft/Build/targets_versions/ardrone_lib_"$ARDRONE_TARGET_BUILD"_vlib_armv7_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
-export ARDRONE_SDKDEV_ARMV7_PATH="../../ARDroneLib/Soft/Build/targets_versions/sdk_"$ARDRONE_TARGET_BUILD"_vlib_armv7_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
-export ARDRONE_VLIB_ARMV7_PATH="../../ARDroneLib/Soft/Build/targets_versions/vlib_"$ARDRONE_TARGET_BUILD"_armv7_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+#export ARDRONE_ARDRONELIB_ARMV7_PATH="../../ARDroneLib/Soft/Build/targets_versions/ardrone_lib_"$ARDRONE_TARGET_BUILD"_vlib_armv7_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+#export ARDRONE_SDKDEV_ARMV7_PATH="../../ARDroneLib/Soft/Build/targets_versions/sdk_"$ARDRONE_TARGET_BUILD"_vlib_armv7_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+#export ARDRONE_VLIB_ARMV7_PATH="../../ARDroneLib/Soft/Build/targets_versions/vlib_"$ARDRONE_TARGET_BUILD"_armv7_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+
+# For XCode >= 4.3
+# TODO: Would be more generic to find the directories that mention the architecture and platform
+export ARDRONE_ARDRONELIB_ARMV6_PATH="../../ARDroneLib/Soft/Build/targets_versions/ardrone_lib_"$ARDRONE_TARGET_BUILD"_vlib_armv6_"$ARDRONE_TARGET_OS"_ApplicationsXcode.appContentsDeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+export ARDRONE_SDKDEV_ARMV6_PATH="../../ARDroneLib/Soft/Build/targets_versions/sdk_"$ARDRONE_TARGET_BUILD"_vlib_armv6_"$ARDRONE_TARGET_OS"_ApplicationsXcode.appContentsDeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+export ARDRONE_VLIB_ARMV6_PATH="../../ARDroneLib/Soft/Build/targets_versions/vlib_"$ARDRONE_TARGET_BUILD"_armv6_"$ARDRONE_TARGET_OS"_ApplicationsXcode.appContentsDeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+
+export ARDRONE_ARDRONELIB_ARMV7_PATH="../../ARDroneLib/Soft/Build/targets_versions/ardrone_lib_"$ARDRONE_TARGET_BUILD"_vlib_armv7_"$ARDRONE_TARGET_OS"_ApplicationsXcode.appContentsDeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+export ARDRONE_SDKDEV_ARMV7_PATH="../../ARDroneLib/Soft/Build/targets_versions/sdk_"$ARDRONE_TARGET_BUILD"_vlib_armv7_"$ARDRONE_TARGET_OS"_ApplicationsXcode.appContentsDeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+export ARDRONE_VLIB_ARMV7_PATH="../../ARDroneLib/Soft/Build/targets_versions/vlib_"$ARDRONE_TARGET_BUILD"_armv7_"$ARDRONE_TARGET_OS"_ApplicationsXcode.appContentsDeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
 
 lipo -arch armv6 $ARDRONE_ARDRONELIB_ARMV6_PATH/libpc_ardrone.a -arch armv7 $ARDRONE_ARDRONELIB_ARMV7_PATH/libpc_ardrone.a -create -output $TARGET_BUILD_DIR/libpc_ardrone.a
 lipo -arch armv6 $ARDRONE_SDKDEV_ARMV6_PATH/libsdk.a -arch armv7 $ARDRONE_SDKDEV_ARMV7_PATH/libsdk.a -create -output $TARGET_BUILD_DIR/libsdk.a
@@ -56,9 +67,16 @@ echo "Compiling ARDroneLib with options IPHONE_MODE = yes - IPHONE_SDK_PATH=${SD
 make IPHONE_MODE=yes IPHONE_SDK_PATH=${SDK_DIR} RELEASE_BUILD=$RELEASE_BUILD ARDRONE_TARGET_OS=${EFFECTIVE_PLATFORM_NAME:1} ARDRONE_TARGET_ARCH=${CURRENT_ARCH}
 
 cd -
-export ARDRONE_ARDRONELIB_PATH="../../ARDroneLib/Soft/Build/targets_versions/ardrone_lib_"$ARDRONE_TARGET_BUILD"_vlib_"${CURRENT_ARCH}"_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
-export ARDRONE_SDKDEV_PATH="../../ARDroneLib/Soft/Build/targets_versions/sdk_"$ARDRONE_TARGET_BUILD"_vlib_"${CURRENT_ARCH}"_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
-export ARDRONE_VLIB_PATH="../../ARDroneLib/Soft/Build/targets_versions/vlib_"$ARDRONE_TARGET_BUILD"_"${CURRENT_ARCH}"_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+# For XCode <= 4.2
+#export ARDRONE_ARDRONELIB_PATH="../../ARDroneLib/Soft/Build/targets_versions/ardrone_lib_"$ARDRONE_TARGET_BUILD"_vlib_"${CURRENT_ARCH}"_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+#export ARDRONE_SDKDEV_PATH="../../ARDroneLib/Soft/Build/targets_versions/sdk_"$ARDRONE_TARGET_BUILD"_vlib_"${CURRENT_ARCH}"_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+#export ARDRONE_VLIB_PATH="../../ARDroneLib/Soft/Build/targets_versions/vlib_"$ARDRONE_TARGET_BUILD"_"${CURRENT_ARCH}"_"$ARDRONE_TARGET_OS"_DeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+
+# For XCode >= 4.3
+export ARDRONE_ARDRONELIB_PATH="../../ARDroneLib/Soft/Build/targets_versions/ardrone_lib_"$ARDRONE_TARGET_BUILD"_vlib_"${CURRENT_ARCH}"_"$ARDRONE_TARGET_OS"_ApplicationsXcode.appContentsDeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+export ARDRONE_SDKDEV_PATH="../../ARDroneLib/Soft/Build/targets_versions/sdk_"$ARDRONE_TARGET_BUILD"_vlib_"${CURRENT_ARCH}"_"$ARDRONE_TARGET_OS"_ApplicationsXcode.appContentsDeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+export ARDRONE_VLIB_PATH="../../ARDroneLib/Soft/Build/targets_versions/vlib_"$ARDRONE_TARGET_BUILD"_"${CURRENT_ARCH}"_"$ARDRONE_TARGET_OS"_ApplicationsXcode.appContentsDeveloperPlatforms"$ARDRONE_TARGET_OS_FORMAT".platformDeveloperusrbingcc_4.2.1"
+
 cp $ARDRONE_ARDRONELIB_PATH/libpc_ardrone.a $TARGET_BUILD_DIR/
 cp $ARDRONE_SDKDEV_PATH/libsdk.a $TARGET_BUILD_DIR/
 cp $ARDRONE_VLIB_PATH/libvlib.a $TARGET_BUILD_DIR/
