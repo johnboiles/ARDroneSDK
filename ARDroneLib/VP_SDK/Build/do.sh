@@ -20,6 +20,7 @@ USE_JPEG_P6=no
 USE_SWING=no
 USE_VLIB=yes
 SWING_VERSION=head
+USE_MACOSX=no
 
 # Check validity of script usage.
 if [ $1 ] && [ $1 = ecos ] ; then

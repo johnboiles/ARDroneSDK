@@ -20,7 +20,7 @@ verify()
 packages="";
 
 if [ `which uname` ] ; then 
-	if [ `uname -a | grep Ubuntu` ] ; then
+	if [ `uname -a | grep Ubuntu | wc -l` ] ; then
 
 		echo "\033[31mChecking required Ubuntu packages ...\033[0m";  
 
@@ -36,7 +36,7 @@ if [ `which uname` ] ; then
 			verify "libavfilter-dev";
 
 			#To use the Wiimote in Navigation
-			verify "libcwiid1-dev";
+			verify "libcwiid-dev";
 			verify "libbluetooth-dev";
 		
 			#To compile Navigation
