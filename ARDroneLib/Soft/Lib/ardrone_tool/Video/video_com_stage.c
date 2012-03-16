@@ -114,9 +114,8 @@ C_RESULT video_com_stage_transform(video_com_config_t *cfg, vp_api_io_data_t *in
   if(out->status == VP_API_STATUS_PROCESSING && cfg->read != NULL)
   {
     out->size = cfg->buffer_size;
-    //printf("receiving video\n");
     res = cfg->read(&cfg->socket, out->buffers[0], &out->size);
-    //printf("video received with size %d\n", out->size);
+
     if( cfg->protocol == VP_COM_UDP )
     {
       if( out->size == 0 )
