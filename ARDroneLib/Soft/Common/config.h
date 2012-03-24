@@ -72,14 +72,14 @@
 
 #define USE_AUTOIP              VP_COM_AUTOIP_DISABLE /* VP_COM_AUTOIP_ENABLE */
 
-#define WIFI_NETMASK            "255.255.255.0"
+#define WIFI_NETMASK            "255.255.0.0"
 #define WIFI_GATEWAY            WIFI_ARDRONE_IP
 #define WIFI_SERVER             WIFI_ARDRONE_IP
 #define WIFI_SECURE             0
 
-#define WIFI_BASE_ADDR          0xc0a80100      			// 192.168.1.0
+#define WIFI_BASE_ADDR          0xc0a80100      			// 10.12.6.0
 #define MULTICAST_BASE_ADDR     0xe0010100      			// 224.1.1.0
-#define WIFI_BROADCAST_ADDR 	(WIFI_BASE_ADDR | 0xff)    //XXX.XXX.XXX.255
+#define WIFI_BROADCAST_ADDR 	(WIFI_BASE_ADDR | 0xffff)    //XXX.XXX.XXX.255
 
 // Configure infrastructure mode given wifi driver compilation
 #define WIFI_INFRASTRUCTURE     0

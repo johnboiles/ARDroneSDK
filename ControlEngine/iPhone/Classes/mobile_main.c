@@ -24,15 +24,20 @@ DEFINE_THREAD_ROUTINE(mobile_main, data)
 
 	ardroneEngineCallback callback = param->callback;
 	vp_os_memset(drone_address, 0x0, sizeof(drone_address));
-	
+
+  /*
 	while(((config = (vp_com_wifi_config_t *)wifi_config()) != NULL) && (strcmp(config->itfName, WIFI_ITFNAME) != 0))
 	{
 		PRINT("Wait WIFI connection !\n");
 		vp_os_delay(250);
 	}
-	
+   */
+
+  config = (vp_com_wifi_config_t *)wifi_config();
 	// Get drone_address
-	vp_os_memcpy(drone_address, config->server, strlen(config->server));
+  char *ip_address = "10.12.6.8";
+	vp_os_memcpy(drone_address, ip_address, strlen(ip_address));
+	//vp_os_memcpy(drone_address, config->server, strlen(config->server));
 	PRINT("Drone address %s\n", drone_address);
 	
 	// Get iphone_mac_address
@@ -52,7 +57,7 @@ DEFINE_THREAD_ROUTINE(mobile_main, data)
 	}
 	else
 	{
-		START_THREAD(video_stage, NULL);
+		//START_THREAD(video_stage, NULL);
 		
 		res = ardrone_tool_init(drone_address, strlen(drone_address), NULL, param->appName, param->usrName);
 		

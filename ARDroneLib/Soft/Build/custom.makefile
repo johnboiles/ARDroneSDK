@@ -27,26 +27,26 @@ USE_ARDRONE_MAINLOOP=yes
 USE_CHECK_WIFI_CONFIG=no
 
 ifeq ($(IPHONE_MODE),yes)
-USE_ARDRONE_MAINLOOP=no
-IPHONE_SDK_PATH=/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0
-# iphoneos or iphonesimulator
-ARDRONE_TARGET_OS=iphoneos
-ARDRONE_TARGET_ARCH=armv6
+	USE_ARDRONE_MAINLOOP=no
+	IPHONE_SDK_PATH=/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0
+	# iphoneos or iphonesimulator
+	ARDRONE_TARGET_OS=iphoneos
+	ARDRONE_TARGET_ARCH=armv6
 else
-   ifeq ($(USE_MACOSX),yes)
-      USE_ARDRONE_MAINLOOP=no
-   else
-      ifeq ($(USE_ANDROID),yes)
-         USE_ARDRONE_MAINLOOP=no
-      endif
-   ARDRONE_TARGET_OS=Linux
-   endif
+	ifeq ($(USE_MACOSX),yes)
+		USE_ARDRONE_MAINLOOP=no
+	else
+		ifeq ($(USE_ANDROID),yes)
+			USE_ARDRONE_MAINLOOP=no
+		endif
+		ARDRONE_TARGET_OS=Linux
+	endif
 endif
 
 ################## Wifi Options ##################
 # Name of the network you want to join or create
-WIFI_NETWORK_NAME    = "ardronenetwork"
-WIFI_BROADCAST       = "192.168.1.255"
+WIFI_NETWORK_NAME    = "yelppub"
+WIFI_BROADCAST       = "10.12.255.255"
 
 ################## Video Options ##################
 # Tells if we want to record video on pc side
@@ -62,10 +62,10 @@ VIDEO_YUV            = yes
 #########################################################
 # Embedded definitions (CUSTOM)
 #########################################################
-WIFI_ARDRONE_IP      = "192.168.1.1"
+WIFI_ARDRONE_IP      = "10.12.6.8"
 
 #########################################################
 # Linux definitions (CUSTOM)
 #########################################################
-WIFI_MOBILE_IP       = "192.168.1.2"
+WIFI_MOBILE_IP       = "10.12.5.236"
 

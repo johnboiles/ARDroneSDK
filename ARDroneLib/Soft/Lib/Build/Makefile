@@ -89,8 +89,8 @@ GENERIC_LIBRARY_SOURCE_FILES+=					       \
 	      $(ARDRONE_TOOL_DIR)/Control/ardrone_navdata_control.c	\
 	      $(ARDRONE_TOOL_DIR)/Navdata/ardrone_navdata_client.c	
 
-		ifneq ($(USE_IPHONE),yes)
-			ifneq ($(USE_MACOSX),yes)
+		ifeq ($(USE_IPHONE),no)
+			ifeq ($(USE_MACOSX),no)
 				GENERIC_LIBRARY_SOURCE_FILES+=				\
 					$(ARDRONE_TOOL_DIR)/Com/config_serial.c
 			endif
