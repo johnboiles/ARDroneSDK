@@ -102,6 +102,9 @@ else
 endif
 
 GCC_VERSION=$(shell $(GENERIC_COMMAND_PREFIX)gcc -v 2>&1 | grep --color=never version | grep -v [cC]onfigur | sed -e "s/\(^version gcc \)\([^ ]*\)\(.*\)/\2/" | sed -e "s/\(^gcc version \)\([^ ]*\)\(.*\)/\2/")
+ifeq ($(USE_MACOSX),yes)
+	GCC_VERSION="unknown"
+endif
 
 ifeq ($(USE_NDS),no)
 ifeq ($(USE_MINGW32),no)

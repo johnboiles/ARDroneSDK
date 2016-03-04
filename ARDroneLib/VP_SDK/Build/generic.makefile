@@ -100,7 +100,7 @@ ifeq ($(USE_DLL),yes)
 endif
 endif
 
-CREATE_TARGET_DIRECTORY=$(INTERNAL_MKDIR) $(@D)
+CREATE_TARGET_DIRECTORY=$(INTERNAL_MKDIR) "$(@D)"
 
 all: clean_log $(ALL_TO_BE_DONE)
 
